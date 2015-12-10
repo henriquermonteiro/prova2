@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="./WEB-INF/templates/principal.xhtml">
+
+    <ui:define name="styles">
+        <link href="./css/inscricao.css" rel="stylesheet" type="text/css" />
+    </ui:define>
+
+    <ui:define name="metadata">
+    </ui:define>
+
+    <ui:define name="javascript">
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h:dataTable id="itens"
+                         value="#{cesta.itens}"
+                         border="1"
+                         var="item">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Numero" />
+                    </f:facet>
+                    <h:inputText id="quant" 
+                                 size="4"
+                                 value="#{item.quant}"
+                                 title="Quantidade">
+                        <f:validateLongRange minimum="1"/>
+                        <f:valueChangeListener type="cesta.quantChange"/>
+                    </h:inputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="CPF"/>
+                    </f:facet>
+                    <h:commandLink action="#{cesta.detalhes}">
+                        <h:outputText value="#{item.titulo}"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome"/>
+                    </f:facet>
+                    <h:commandLink action="#{cesta.detalhes}">
+                        <h:outputText value="#{item.titulo}"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cidade"/>
+                    </f:facet>
+                    <h:commandLink action="#{cesta.detalhes}">
+                        <h:outputText value="#{item.titulo}"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Estado"/>
+                    </f:facet>
+                    <h:commandLink action="#{cesta.detalhes}">
+                        <h:outputText value="#{item.titulo}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -1,3 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/avaliacao2">
+    <persistence version="2.0" 
+                 xmlns="http://java.sun.com/xml/ns/persistence"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+        
+        <persistence-unit name="AvaliacaoPU" transaction-type="RESOURCE_LOCAL">
+            <non-jta-data-source>java:comp/env/jdbc/exemplo</non-jta-data-source>
+        </persistence-unit>
+        
+        <Resource auth="Container"
+              name="jdbc/exemplo"
+              type="javax.sql.DataSource"
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://dev.ct.utfpr.edu.br/cema"
+              username="aluno01"
+              password="aluno01"
+              maxActive="20"
+              maxIdle="5"
+              maxWait="10000"
+              removeAbandoned="true"
+              logAbandoned="true"
+              validationQuery="select numero from inscricao limit 1"/>
+        
+    </persistence>
 </Context>
