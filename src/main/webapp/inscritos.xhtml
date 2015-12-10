@@ -18,52 +18,23 @@
     <ui:define name="content">
         <h:form>
             <h:dataTable id="itens"
-                         value="#{cesta.itens}"
+                         value="#{inscricaoJpa.getAll}"
                          border="1"
-                         var="item">
+                         var="insc">
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Numero" />
-                    </f:facet>
-                    <h:inputText id="quant" 
-                                 size="4"
-                                 value="#{item.quant}"
-                                 title="Quantidade">
-                        <f:validateLongRange minimum="1"/>
-                        <f:valueChangeListener type="cesta.quantChange"/>
-                    </h:inputText>
+                    <h:outputText value="#{insc.numero}" />
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="CPF"/>
-                    </f:facet>
-                    <h:commandLink action="#{cesta.detalhes}">
-                        <h:outputText value="#{item.titulo}"/>
-                    </h:commandLink>
+                    <h:outputText value="#{insc.cpf}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Nome"/>
-                    </f:facet>
-                    <h:commandLink action="#{cesta.detalhes}">
-                        <h:outputText value="#{item.titulo}"/>
-                    </h:commandLink>
+                    <h:outputText value="#{insc.nome}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Cidade"/>
-                    </f:facet>
-                    <h:commandLink action="#{cesta.detalhes}">
-                        <h:outputText value="#{item.titulo}"/>
-                    </h:commandLink>
+                    <h:outputText value="#{insc.cidade}"/>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Estado"/>
-                    </f:facet>
-                    <h:commandLink action="#{cesta.detalhes}">
-                        <h:outputText value="#{item.titulo}"/>
-                    </h:commandLink>
+                    <h:outputText value="#{insc.estado}"/>
                 </h:column>
             </h:dataTable>
         </h:form>

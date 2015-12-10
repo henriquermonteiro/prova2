@@ -50,4 +50,16 @@ public class InscricaoJpa {
         
         return list;
     }
+    
+    public List<Inscricao> getAll(){
+        EntityManager entityManager = factory.createEntityManager();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Inscricao> cq = cb.createQuery(Inscricao.class);
+        Root<Inscricao> rt = cq.from(Inscricao.class);
+        
+        TypedQuery<Inscricao> tq = entityManager.createQuery(cq);
+        List<Inscricao> list = tq.getResultList();
+        
+        return list;
+    }
 }
